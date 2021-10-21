@@ -1,0 +1,13 @@
+.DS_Store
+.project
+.settings
+.classpath
+bin/
+certs_save/
+"JRE System Library"/
+logs/
+"Maven Dependencies"/
+"Referenced Libraries"/
+src/employees.csv
+target/
+TestFiles/
