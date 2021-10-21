@@ -1,0 +1,173 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.cag.adpvconnect</groupId>
+	<artifactId>AdpvConnect</artifactId>
+	<version>1.0.0</version>
+
+	<name>AdpvConnect</name>
+	<description>ADP and Visual Connection</description>
+
+	<organization>
+		<name>Catalyst Acoustics Group</name>
+	</organization>
+	<inceptionYear>2016</inceptionYear>
+
+	<licenses>
+		<license>
+			<name>The Apache Software License, Version 2.0</name>
+			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>tallaprs</id>
+			<name>Ambika Tallapragada</name>
+		</developer>
+	</developers>
+
+	<properties>
+		<maven.surefire.version>2.10</maven.surefire.version>
+		<commons-logging-version>1.2</commons-logging-version>
+		<org.apache.commons-version>3.4</org.apache.commons-version>
+		<org.apache.httpcomponents-version>4.5.13</org.apache.httpcomponents-version>
+		<com.googlecode.json-simple-version>1.1.1</com.googlecode.json-simple-version>
+		<com.google.code.gson-version>2.3.1</com.google.code.gson-version>
+		<com.adp.marketplace.connection-version>1.0.0</com.adp.marketplace.connection-version>
+		<org.slf4j-version>1.7.14</org.slf4j-version>
+ 	</properties>
+
+	<build>
+		<finalName>${project.artifactId}-${project.version}</finalName>
+		<directory>${basedir}/target</directory>
+		<sourceDirectory>${basedir}/src/main/java</sourceDirectory>
+		<testSourceDirectory>${basedir}/src/test/java</testSourceDirectory>
+		<outputDirectory>${basedir}/target/classes</outputDirectory>
+		<testOutputDirectory>${basedir}/target/test-classes</testOutputDirectory>
+		<scriptSourceDirectory>${basedir}/src/main/scripts</scriptSourceDirectory>
+
+		<plugins>
+			<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-javadoc-plugin</artifactId> 
+				<version>${maven.javadoc.version}</version> <configuration> <show>private</show> 
+				<nohelp>true</nohelp> </configuration> </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
+				<executions>
+					<execution>
+						<id>attach-sources</id>
+						<goals>
+							<goal>jar-no-fork</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.9.1</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven.surefire.version}</version>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<useReleaseProfile>false</useReleaseProfile>
+					<releaseProfiles>release</releaseProfiles>
+					<goals>deploy</goals>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<extensions>
+			<extension>
+				<groupId>com.adp.marketplace.connection</groupId>
+				<artifactId>ADPConnection</artifactId>
+				<version>${com.adp.marketplace.connection-version}</version>
+			</extension>
+		</extensions>
+
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>${commons-logging-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>${org.apache.commons-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${org.apache.httpcomponents-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>${com.google.code.gson-version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.adp.marketplace.connection</groupId>
+			<artifactId>ADPConnection</artifactId>
+			<version>${com.adp.marketplace.connection-version}</version>
+		</dependency>
+
+ <dependency> 
+  <groupId>org.slf4j</groupId>
+  <artifactId>slf4j-log4j12</artifactId>
+  <version>${org.slf4j-version}</version>
+</dependency>
+
+	</dependencies>
+
+
+</project>
